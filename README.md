@@ -1,73 +1,141 @@
-# React + TypeScript + Vite
+# Vehicle Tracking System - Frontend
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Overview
 
-Currently, two official plugins are available:
+This is the frontend application for the **Vehicle Tracking System** built using **React, Vite, and TypeScript**.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+The application allows users to:
 
-## React Compiler
+* Login to the system
+* Upload GPS CSV trip data
+* View trips on an interactive map
+* Analyze trip details such as:
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+  * Distance travelled
+  * Idling duration
+  * Stoppage duration
+  * Overspeed segments
 
-## Expanding the ESLint configuration
+The frontend communicates with the backend APIs built using **Express + MongoDB + TypeScript**.
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+---
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+# Tech Stack
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+* React
+* Vite
+* TypeScript
+* Axios
+* React Router
+* ESLint
+* Leaflet (for map visualization)
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+---
+
+# Project Setup
+
+### 1 Install Dependencies
+
+```
+npm install
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+### 2 Start Development Server
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
 ```
+npm run dev
+```
+
+Application runs at:
+
+```
+http://localhost:5173
+```
+
+Backend API should be running at:
+
+```
+http://localhost:5000
+```
+
+---
+
+# Project Structure
+
+```
+src
+│
+├── api
+│   └── axiosInstance.ts
+│
+├── components
+│   └── common
+│
+├── pages
+│   ├── Login
+│   ├── Upload
+│   └── Trips
+│
+├── services
+│
+├── types
+│
+├── routes
+│
+├── App.tsx
+├── main.tsx
+```
+
+---
+
+# Code Quality
+
+ESLint is configured to enforce:
+
+* Strict TypeScript rules
+* No usage of `any`
+* React Hooks rules
+* Consistent code structure
+
+Run ESLint using:
+
+```
+npm run lint
+```
+
+---
+
+# API Communication
+
+All API requests are handled through a centralized **Axios instance**.
+
+Backend Base URL:
+
+```
+http://localhost:5000/api
+```
+
+Example API usage:
+
+```
+POST /auth/login
+POST /trip/upload
+GET /trip/list
+GET /trip/:id
+```
+
+---
+
+# Future Features
+
+* CSV Upload for GPS trip data
+* Map visualization using Leaflet
+* Display of stoppage and idling points
+* Overspeed route highlighting
+* Trip reports and analytics
+
+---
+
+# Author
+
+Nisha Mashhood
