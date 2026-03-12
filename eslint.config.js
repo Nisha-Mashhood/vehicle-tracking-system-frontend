@@ -25,7 +25,7 @@ export default defineConfig([
 
     rules: {
       "@typescript-eslint/no-explicit-any": "error",
-      "@typescript-eslint/explicit-function-return-type": "warn",
+      // "@typescript-eslint/explicit-function-return-type": "warn",
       "@typescript-eslint/no-unused-vars": "warn",
       "react-hooks/exhaustive-deps": "warn"
     }
