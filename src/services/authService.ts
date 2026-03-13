@@ -10,6 +10,30 @@ export interface LoginResponseDTO {
   userId: string;
 }
 
+export interface RegisterRequestDTO {
+  firstName: string;
+  lastName: string;
+  email: string;
+  password: string;
+}
+
+export interface RegisterResponseDTO {
+  success: boolean;
+  message: string;
+}
+
+export const registerUser = async (
+  data: RegisterRequestDTO
+): Promise<RegisterResponseDTO> => {
+
+  const response = await axiosInstance.post<RegisterResponseDTO>(
+    "/auth/register",
+    data
+  );
+
+  return response.data;
+};
+
 export const loginUser = async (
   data: LoginRequestDTO
 ): Promise<LoginResponseDTO> => {
