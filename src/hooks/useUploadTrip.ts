@@ -6,11 +6,14 @@ export const useUploadTrip = () => {
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState<string | null>(null)
 
-  const upload = async (file: File) => {
+  const upload = async (file: File, tripName: string) => {
     try {
       setLoading(true)
       setError(null)
-      const response = await uploadTrip(file)
+      const formData = new FormData();
+      formData.append("file", file);
+      formData.append("tripName", tripName);
+      const response = await uploadTrip(formData)
       return response
     } catch (err: unknown) {
       if (err instanceof Error) {

@@ -6,8 +6,13 @@ export interface LoginRequestDTO {
 }
 
 export interface LoginResponseDTO {
-  token: string;
-  userId: string;
+  success: boolean
+  message: string
+  data: {
+    token: string
+    userId: string
+    email: string
+  }
 }
 
 export interface RegisterRequestDTO {

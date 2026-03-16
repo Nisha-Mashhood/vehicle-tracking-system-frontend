@@ -20,19 +20,15 @@ export default function InputField<T extends FieldValues>({
 }: InputFieldProps<T>) {
 
   return (
-    <div style={{ marginBottom: "16px" }}>
-
-      <label>{label}</label>
+    <div>
+      <label className="block text-sm font-medium text-gray-600 mb-1">
+        {label}
+      </label>
 
       <input
         type={type}
         {...register(name, validation)}
-        style={{
-          display: "block",
-          width: "100%",
-          padding: "8px",
-          marginTop: "5px"
-        }}
+        className="w-full border rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400"
       />
 
       <FormError message={error?.message} />

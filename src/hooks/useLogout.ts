@@ -4,7 +4,7 @@ export const useLogout = () => {
   const navigate = useNavigate()
   const logout = () => {
     localStorage.removeItem("token")
-    navigate("/login")
+    navigate("/")
   }
   return { logout }
 

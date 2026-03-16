@@ -6,6 +6,7 @@ import HomePage from "../pages/Home/HomePage"
 
 import ProtectedRoute from "./ProtectedRoute"
 import PublicRoute from "./PublicRoute"
+import TripDetailsPage from "../components/trips/TripDetails"
 
 export default function AppRoutes() {
 
@@ -13,7 +14,7 @@ export default function AppRoutes() {
     <BrowserRouter>
       <Routes>
         <Route
-          path="/login"
+          path="/"
           element={
             <PublicRoute>
               <LoginPage />
@@ -36,6 +37,12 @@ export default function AppRoutes() {
             </ProtectedRoute>
           }
         />
+        <Route path="/trip/:tripId" 
+        element={
+          <ProtectedRoute>
+              <TripDetailsPage />
+          </ProtectedRoute>
+        } />
       </Routes>
     </BrowserRouter>
 
